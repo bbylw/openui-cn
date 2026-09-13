@@ -6,6 +6,12 @@ export type Pkg = {
   group: "React" | "跨框架" | "服务端" | "工具";
 };
 
+/** README 的包表格里，包名本身就是指向 monorepo 子目录的超链接。 */
+export const pkgRepoUrl = (sub: string) =>
+  `https://github.com/thesysdev/openui/tree/main/${sub}`;
+
+export const pkgNpmUrl = (name: string) => `https://www.npmjs.com/package/${name}`;
+
 export const PACKAGES: Pkg[] = [
   {
     name: "@openuidev/lang-core",

@@ -143,7 +143,15 @@ export default function BenchmarksPage() {
                   <span>
                     该技能让 Claude Code、Codex、Cursor、Copilot 等助手可以帮你用 OpenUI Lang
                     搭建、构建和调试生成式 UI 应用；内容覆盖组件库设计、Lang 语法、系统提示生成、渲染器、SDK 包，
-                    以及调试格式错误的模型输出。
+                    以及调试格式错误的模型输出。技能规格见{" "}
+                    <a className="link" href={SITE.skillsHome} target="_blank" rel="noreferrer">
+                      agentskills.io
+                    </a>
+                    ，源码维护在{" "}
+                    <a className="link" href={SITE.skillsRepo} target="_blank" rel="noreferrer">
+                      thesysdev/skills
+                    </a>
+                    。
                   </span>
                 </div>
               </div>

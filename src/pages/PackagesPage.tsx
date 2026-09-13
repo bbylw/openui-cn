@@ -7,8 +7,10 @@ import {
   INSTALL_SNIPPETS,
   PACKAGES,
   REPO_TREE,
+  pkgNpmUrl,
+  pkgRepoUrl,
 } from "@/content/packages";
-import { SITE } from "@/content/site";
+import { GETTING_STARTED_LINKS, REPO_BADGES, SITE } from "@/content/site";
 
 const GROUPS = ["React", "跨框架", "服务端", "工具"] as const;
 
@@ -82,9 +84,23 @@ export default function PackagesPage() {
                     {items.map((pkg) => (
                       <div className="pkg" key={pkg.name}>
                         <div>
-                          <div className="pkg__name">{pkg.name}</div>
+                          <a
+                            className="pkg__name link"
+                            href={pkgRepoUrl(pkg.sub)}
+                            target="_blank"
+                            rel="noreferrer"
+                          >
+                            {pkg.name}
+                          </a>
                           <div className="pkg__use">适用场景：{pkg.use}</div>
-                          <div className="pkg__use mono">{pkg.sub}</div>
+                          <div className="pkg__meta">
+                            <a href={pkgRepoUrl(pkg.sub)} target="_blank" rel="noreferrer">
+                              monorepo 目录
+                            </a>
+                            <a href={pkgNpmUrl(pkg.name)} target="_blank" rel="noreferrer">
+                              npm
+                            </a>
+                          </div>
                         </div>
                         <div className="pkg__desc">{pkg.desc}</div>
                       </div>
@@ -281,6 +297,99 @@ const schema = openuiLibrary.toJSONSchema();`}
               </a>
             </div>
           </Reveal>
+        </div>
+      </section>
+
+      {/* ---------------------------------------------------------------- */}
+      <section className="band" id="start-here">
+        <div className="wrap">
+          <Reveal>
+            <SectionHead
+              index="/ 05"
+              title="从这里开始"
+              sub="README 给出的四条入门路径，按你当前要做的事挑一条。"
+            />
+          </Reveal>
+
+          <Reveal delay={40}>
+            <div className="jump">
+              {GETTING_STARTED_LINKS.map((item) => (
+                <a
+                  className="jump__item"
+                  key={item.label}
+                  href={item.href}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <span className="jump__k">{item.label}</span>
+                  <span className="jump__d">{item.desc}</span>
+                </a>
+              ))}
+            </div>
+          </Reveal>
+
+          <div className="split" style={{ marginTop: 36 }}>
+            <Reveal delay={80}>
+              <div className="stack">
+                <div className="eyebrow">社区</div>
+                <div className="klist">
+                  <a className="kitem" href={SITE.discord} target="_blank" rel="noreferrer">
+                    <span className="kitem__n">01</span>
+                    <span>
+                      <span className="kitem__t">Discord</span>
+                      <span className="kitem__d" style={{ display: "block" }}>
+                        提问、分享你正在构建的内容。
+                      </span>
+                    </span>
+                  </a>
+                  <a className="kitem" href={SITE.issues} target="_blank" rel="noreferrer">
+                    <span className="kitem__n">02</span>
+                    <span>
+                      <span className="kitem__t">GitHub Issues</span>
+                      <span className="kitem__d" style={{ display: "block" }}>
+                        报告错误或请求功能。
+                      </span>
+                    </span>
+                  </a>
+                  <a className="kitem" href={SITE.adopters} target="_blank" rel="noreferrer">
+                    <span className="kitem__n">03</span>
+                    <span>
+                      <span className="kitem__t">ADOPTERS.md</span>
+                      <span className="kitem__d" style={{ display: "block" }}>
+                        正在使用 OpenUI 的组织与项目列表；欢迎把你的组织加进去。
+                      </span>
+                    </span>
+                  </a>
+                </div>
+              </div>
+            </Reveal>
+
+            <Reveal delay={120}>
+              <div className="stack">
+                <div className="eyebrow">仓库状态</div>
+                <div className="badges">
+                  {REPO_BADGES.map((badge) => (
+                    <a
+                      className="badge"
+                      key={badge.label}
+                      href={badge.href}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      <span className="badge__k">{badge.label}</span>
+                      <span className="badge__v">{badge.value}</span>
+                    </a>
+                  ))}
+                </div>
+                <div className="note">
+                  <span>
+                    README 顶部还有项目 banner 与 demo.gif 演示动画。本站没有引用这两张远程图片，
+                    而是用由 openuiLibrary 实时渲染的界面来替代——它们比录屏更能说明问题。
+                  </span>
+                </div>
+              </div>
+            </Reveal>
+          </div>
         </div>
       </section>
     </>

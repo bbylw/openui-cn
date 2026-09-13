@@ -1326,6 +1326,27 @@
     color: var(--oc-fg-3);
   }
 
+  .pkg__meta {
+    margin-top: 9px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    font-family: var(--oc-font-mono);
+    font-size: 11px;
+  }
+
+  .pkg__meta a {
+    color: var(--oc-fg-2);
+    border-bottom: 1px solid var(--oc-line);
+    padding-bottom: 1px;
+    transition: color 0.15s var(--oc-ease), border-color 0.15s var(--oc-ease);
+  }
+
+  .pkg__meta a:hover {
+    color: var(--oc-accent-text);
+    border-color: var(--oc-accent);
+  }
+
   .pkg__desc {
     font-size: 0.925rem;
     color: var(--oc-fg-2);
@@ -1893,6 +1914,49 @@
   .jump__d {
     font-size: 0.85rem;
     color: var(--oc-fg-2);
+  }
+
+  a.jump__item .jump__k {
+    color: var(--oc-fg-2);
+  }
+
+  .badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    border: 1px solid var(--oc-line);
+    border-radius: var(--oc-r-pill);
+    padding: 5px 12px;
+    font-family: var(--oc-font-mono);
+    font-size: 11px;
+    transition: border-color 0.15s var(--oc-ease);
+  }
+
+  .badge__k {
+    color: var(--oc-fg-3);
+  }
+
+  .badge__v {
+    color: var(--oc-fg);
+    transition: color 0.15s var(--oc-ease);
+  }
+
+  .badge:hover {
+    border-color: var(--oc-accent-line);
+  }
+
+  .badge:hover .badge__v {
+    color: var(--oc-accent-text);
+  }
+
+  a.kitem:hover .kitem__t {
+    color: var(--oc-accent-text);
   }
 
 

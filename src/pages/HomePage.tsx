@@ -15,7 +15,7 @@ import {
 } from "@/content/home";
 import { KPI_PATTERN } from "@/content/lang";
 import { PACKAGES } from "@/content/packages";
-import { SITE } from "@/content/site";
+import { ENTRY_LINKS, REPO_BADGES, SITE } from "@/content/site";
 
 const CLI = `npx @openuidev/cli@latest create --name genui-chat-app
 cd genui-chat-app
@@ -363,6 +363,54 @@ function AssistantMessage({ content, isStreaming }) {
               <Link className="btn" to="/benchmarks">
                 查看完整对比与延迟数据
               </Link>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ---------------------------------------------------------------- */}
+      <section className="band" id="entry">
+        <div className="wrap">
+          <Reveal>
+            <SectionHead
+              index="/ 06"
+              title="官方入口与生态"
+              sub="README 顶部那一行入口，加上仓库状态标记与入门路径。"
+            />
+          </Reveal>
+
+          <Reveal delay={40}>
+            <div className="jump">
+              {ENTRY_LINKS.map((item) => (
+                <a
+                  className="jump__item"
+                  key={item.key}
+                  href={item.href}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <span className="jump__k">{item.key}</span>
+                  <span className="jump__t">{item.title}</span>
+                  <span className="jump__d">{item.desc}</span>
+                </a>
+              ))}
+            </div>
+          </Reveal>
+
+          <Reveal delay={80}>
+            <div className="badges" style={{ marginTop: 18 }}>
+              {REPO_BADGES.map((badge) => (
+                <a
+                  className="badge"
+                  key={badge.label}
+                  href={badge.href}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <span className="badge__k">{badge.label}</span>
+                  <span className="badge__v">{badge.value}</span>
+                </a>
+              ))}
             </div>
           </Reveal>
         </div>
