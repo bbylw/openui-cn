@@ -1,0 +1,75 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="1200"
+  height="630"
+  viewBox="0 0 1200 630"
+  role="img"
+  aria-label="OpenUI 中文站 — 生成式 UI 的开放标准"
+>
+  <title>OpenUI 中文站 — 生成式 UI 的开放标准</title>
+  <defs>
+    <radialGradient id="glow" cx="16%" cy="-6%" r="72%">
+      <stop offset="0%" stop-color="#ccf24f" stop-opacity="0.18" />
+      <stop offset="100%" stop-color="#ccf24f" stop-opacity="0" />
+    </radialGradient>
+    <pattern id="grid" width="76" height="76" patternUnits="userSpaceOnUse">
+      <path d="M76 0H0V76" fill="none" stroke="#f2f2ed" stroke-opacity="0.062" stroke-width="1" />
+    </pattern>
+    <linearGradient id="gridFade" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="1" />
+      <stop offset="78%" stop-color="#ffffff" stop-opacity="0" />
+    </linearGradient>
+    <mask id="gridMask">
+      <rect width="1200" height="630" fill="url(#gridFade)" />
+    </mask>
+  </defs>
+
+  <rect width="1200" height="630" fill="#08090b" />
+  <rect width="1200" height="630" fill="url(#grid)" mask="url(#gridMask)" />
+  <rect width="1200" height="630" fill="url(#glow)" />
+
+  <g
+    font-family="'Segoe UI', system-ui, -apple-system, 'Microsoft YaHei', 'PingFang SC', 'Noto Sans SC', sans-serif"
+  >
+    <g transform="translate(80 88)">
+      <rect x="0" y="0" width="42" height="42" rx="9" fill="none" stroke="#ccf24f" stroke-opacity="0.38" />
+      <g transform="translate(5 5)" fill="none" stroke="#ccf24f" stroke-width="2.4" stroke-linecap="round">
+        <path d="M5.44 7.36h8.32M5.44 7.36v8.32" />
+        <path d="M26.56 24.64h-8.32M26.56 24.64v-8.32" />
+        <path d="M6.4 25.6 25.6 6.4" />
+      </g>
+    </g>
+
+    <text x="136" y="118" font-size="26" font-weight="600" fill="#f2f2ed" letter-spacing="0.2">
+      OpenUI 中文站
+    </text>
+    <text x="1120" y="117" text-anchor="end" font-size="20" fill="#7d7e76" letter-spacing="0.6">
+      openui.ndjp.net
+    </text>
+
+    <text x="80" y="298" font-size="96" font-weight="700" fill="#f2f2ed" letter-spacing="-3">
+      让模型直接吐出
+    </text>
+    <text x="80" y="400" font-size="96" font-weight="700" fill="#ccf24f" letter-spacing="-3">
+      一段可流式的界面
+    </text>
+
+    <text x="80" y="456" font-size="24" fill="#9e9f98">
+      OpenUI — 全栈、渲染器无关的生成式 UI 框架
+    </text>
+    <text x="80" y="490" font-size="24" fill="#9e9f98">
+      比等价 JSON 最多减少 67% 的 token
+    </text>
+
+    <rect x="80" y="528" width="1040" height="1" fill="#f2f2ed" fill-opacity="0.13" />
+
+    <text x="80" y="582" font-size="36" font-weight="700" fill="#ccf24f">−52.8%</text>
+    <text x="80" y="612" font-size="17" fill="#7d7e76">总体 Token · 对比 Vercel JSON-Render</text>
+
+    <text x="480" y="582" font-size="36" font-weight="700" fill="#f2f2ed">10 个</text>
+    <text x="480" y="612" font-size="17" fill="#7d7e76">官方包 · React / Vue / Svelte / CLI</text>
+
+    <text x="880" y="582" font-size="36" font-weight="700" fill="#f2f2ed">4.9s</text>
+    <text x="880" y="612" font-size="17" fill="#7d7e76">延迟 · 60 tok/s，对比 14.2s</text>
+  </g>
+</svg>
