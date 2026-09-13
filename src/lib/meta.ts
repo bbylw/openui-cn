@@ -22,6 +22,11 @@ export const ROUTE_META: Record<string, { title: string; description: string }> 
     description:
       "react-lang、react-ui、react-headless、lang-core、langchain、vue-lang、svelte-lang、CLI 等官方包的适用场景与安装方式。",
   },
+  "/community": {
+    title: "生态与参与 — 文档、Agent 技能与社区 | OpenUI 中文站",
+    description:
+      "官方文档覆盖的主题、仓库结构、社区渠道、采用者名单、贡献流程，以及能让 AI 编程助手帮你写生成式 UI 的 Agent 技能。",
+  },
   "/benchmarks": {
     title: "基准与对比 — Token、延迟与能力 | OpenUI 中文站",
     description:

@@ -5,6 +5,7 @@ import { SiteHeader } from "@/components/SiteHeader";
 import { applyRouteMeta } from "@/lib/meta";
 import { ThemeModeContext, useThemeMode } from "@/lib/theme";
 import BenchmarksPage from "@/pages/BenchmarksPage";
+import CommunityPage from "@/pages/CommunityPage";
 import HomePage from "@/pages/HomePage";
 import LangPage from "@/pages/LangPage";
 import PackagesPage from "@/pages/PackagesPage";
@@ -47,6 +48,7 @@ export default function App() {
               <Route path="/quickstart" element={<QuickstartPage />} />
               <Route path="/packages" element={<PackagesPage />} />
               <Route path="/benchmarks" element={<BenchmarksPage />} />
+              <Route path="/community" element={<CommunityPage />} />
               <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>
           </div>

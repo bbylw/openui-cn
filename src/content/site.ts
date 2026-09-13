@@ -46,6 +46,31 @@ export const ENTRY_LINKS = [
     desc: "贡献代码、示例实现与文档修订的完整流程。",
     href: SITE.contributing,
   },
+  {
+    key: "Agent 技能",
+    title: "thesysdev/skills",
+    desc: "让 AI 编程助手帮你搭建、构建和调试生成式 UI 应用。",
+    href: SITE.skillsRepo,
+  },
+];
+
+/** 官方文档站覆盖的主题（来自 docs/ 的内容目录） */
+export const DOCS_TOPICS = [
+  { name: "openui-lang", desc: "语言规范、语法、内建函数、渲染器与可靠性" },
+  { name: "agent", desc: "代理接入与核心概念" },
+  { name: "build-agents", desc: "构建你自己的代理应用" },
+  { name: "api-reference", desc: "各官方包的 API 参考" },
+  { name: "mcp", desc: "Model Context Protocol 集成" },
+];
+
+/** Agent 技能覆盖的能力 */
+export const SKILL_COVERS = [
+  "组件库设计",
+  "OpenUI Lang 语法",
+  "系统提示生成",
+  "渲染器",
+  "SDK 包",
+  "调试格式错误的模型输出",
 ];
 
 /** README 仓库结构之后的「入门指南」 */
@@ -84,8 +109,9 @@ export const NAV = [
   { to: "/", label: "总览", end: true },
   { to: "/lang", label: "OpenUI Lang" },
   { to: "/quickstart", label: "快速开始" },
-  { to: "/packages", label: "包与生态" },
+  { to: "/packages", label: "包与组件库" },
   { to: "/benchmarks", label: "基准与对比" },
+  { to: "/community", label: "生态与参与" },
 ] as const;
 
 export const FOOTER_COLUMNS = [
@@ -95,8 +121,9 @@ export const FOOTER_COLUMNS = [
       { label: "总览", href: "/", external: false },
       { label: "OpenUI Lang", href: "/lang", external: false },
       { label: "快速开始", href: "/quickstart", external: false },
-      { label: "包与生态", href: "/packages", external: false },
+      { label: "包与组件库", href: "/packages", external: false },
       { label: "基准与对比", href: "/benchmarks", external: false },
+      { label: "生态与参与", href: "/community", external: false },
     ],
   },
   {

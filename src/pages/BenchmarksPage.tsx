@@ -1,14 +1,10 @@
 import { BenchTable, TotalsBars } from "@/components/BenchTable";
-import { CodeBlock } from "@/components/CodeBlock";
 import { CompareTable } from "@/components/CompareTable";
 import { PageHero } from "@/components/PageHero";
 import { Reveal } from "@/components/Reveal";
 import { SectionHead } from "@/components/SectionHead";
 import { BENCH_METHOD, BENCH_TOTAL } from "@/content/benchmarks";
 import { SITE } from "@/content/site";
-
-const SKILL_CODE = `# 使用 skills CLI（适用于所有代理）
-npx skills add thesysdev/skills --skill openui`;
 
 export default function BenchmarksPage() {
   return (
@@ -121,75 +117,6 @@ export default function BenchmarksPage() {
               </a>
             </div>
           </Reveal>
-        </div>
-      </section>
-
-      {/* ---------------------------------------------------------------- */}
-      <section className="band" id="community">
-        <div className="wrap">
-          <Reveal>
-            <SectionHead
-              index="/ 02"
-              title="生态与参与"
-              sub="采用者名单、贡献指南，以及一个能给 AI 编程助手用的 Agent 技能。"
-            />
-          </Reveal>
-
-          <div className="split">
-            <Reveal delay={40}>
-              <div className="stack">
-                <CodeBlock title="安装 Agent 技能" code={SKILL_CODE} />
-                <div className="note">
-                  <span>
-                    该技能让 Claude Code、Codex、Cursor、Copilot 等助手可以帮你用 OpenUI Lang
-                    搭建、构建和调试生成式 UI 应用；内容覆盖组件库设计、Lang 语法、系统提示生成、渲染器、SDK 包，
-                    以及调试格式错误的模型输出。技能规格见{" "}
-                    <a className="link" href={SITE.skillsHome} target="_blank" rel="noreferrer">
-                      agentskills.io
-                    </a>
-                    ，源码维护在{" "}
-                    <a className="link" href={SITE.skillsRepo} target="_blank" rel="noreferrer">
-                      thesysdev/skills
-                    </a>
-                    。
-                  </span>
-                </div>
-              </div>
-            </Reveal>
-
-            <Reveal delay={80}>
-              <div className="grid grid--2">
-                <a className="cell" href={SITE.adopters} target="_blank" rel="noreferrer">
-                  <div className="cell__idx">采用者</div>
-                  <div className="cell__title">ADOPTERS.md</div>
-                  <div className="cell__body">
-                    正在使用 OpenUI 的组织与项目列表。如果你也在用，可以把自己的组织加进去。
-                  </div>
-                </a>
-                <a className="cell" href={SITE.contributing} target="_blank" rel="noreferrer">
-                  <div className="cell__idx">贡献</div>
-                  <div className="cell__title">CONTRIBUTING.md</div>
-                  <div className="cell__body">
-                    贡献指南与参与方式。代码贡献、示例实现与文档修订都欢迎。
-                  </div>
-                </a>
-                <a className="cell" href={SITE.discord} target="_blank" rel="noreferrer">
-                  <div className="cell__idx">社区</div>
-                  <div className="cell__title">Discord</div>
-                  <div className="cell__body">
-                    提问、分享你正在构建的内容，或者只是看看别人用它做了什么。
-                  </div>
-                </a>
-                <a className="cell" href={SITE.license} target="_blank" rel="noreferrer">
-                  <div className="cell__idx">许可证</div>
-                  <div className="cell__title">MIT License</div>
-                  <div className="cell__body">
-                    本项目基于仓库 LICENSE 文件描述的条款提供，可商用。
-                  </div>
-                </a>
-              </div>
-            </Reveal>
-          </div>
         </div>
       </section>
     </>
