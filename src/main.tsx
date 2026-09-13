@@ -2,8 +2,6 @@ import "@fontsource-variable/inter/wght.css";
 import "@fontsource-variable/space-grotesk/wght.css";
 import "@fontsource-variable/jetbrains-mono/wght.css";
 import "./styles/layers.css";
-/* OpenUI 组件样式只需从这一处引入（开启 @layer openui 的分层变体） */
-import "@openuidev/react-ui/layered/styles/index.css";
 import "./styles/index.css";
 
 import { StrictMode } from "react";

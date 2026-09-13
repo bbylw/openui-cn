@@ -66,7 +66,7 @@
     --oc-sunk: #15161b;
     --oc-fg: #f2f2ed;
     --oc-fg-2: #9e9f98;
-    --oc-fg-3: #65665f;
+    --oc-fg-3: #7d7e76;
     --oc-line: rgba(242, 242, 237, 0.13);
     --oc-line-soft: rgba(242, 242, 237, 0.065);
     --oc-accent: #ccf24f;
@@ -105,7 +105,7 @@
     --oc-sunk: #e7e6df;
     --oc-fg: #121210;
     --oc-fg-2: #55564e;
-    --oc-fg-3: #898a80;
+    --oc-fg-3: #6c6d65;
     --oc-line: rgba(18, 18, 16, 0.15);
     --oc-line-soft: rgba(18, 18, 16, 0.075);
     --oc-accent: #c4ec3c;
@@ -168,6 +168,24 @@
 
   .main {
     flex: 1 0 auto;
+  }
+
+  /* 键盘用户跳过导航 */
+  .skip {
+    position: absolute;
+    top: 10px;
+    left: -9999px;
+    z-index: 100;
+    padding: 10px 16px;
+    border-radius: var(--oc-r-sm);
+    background: var(--oc-accent);
+    color: var(--oc-accent-ink);
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+
+  .skip:focus {
+    left: 12px;
   }
 
   /* ---------------------------------------------------------------------- */

@@ -1,9 +1,16 @@
-import { Component, type ReactNode } from "react";
-import { useRef, useState } from "react";
-import { Renderer } from "@openuidev/react-lang";
-import { openuiLibrary } from "@openuidev/react-ui";
+import { Component, lazy, Suspense, useRef, useState } from "react";
+import type { ReactNode } from "react";
 import { LangCode } from "@/components/LangCode";
 import { useInView, useTypewriter } from "@/lib/hooks";
+import { useThemeModeValue } from "@/lib/theme";
+
+/* OpenUI 运行时按需加载：首屏只渲染左侧的 Lang 流，渲染器分块到达后再接管右栏 */
+const OpenUITheme = lazy(() =>
+  import("@/lib/openui-runtime").then((m) => ({ default: m.OpenUITheme })),
+);
+const OpenUILangPreview = lazy(() =>
+  import("@/lib/openui-runtime").then((m) => ({ default: m.OpenUILangPreview })),
+);
 
 class RenderBoundary extends Component<
   { children: ReactNode; fallback: ReactNode },
@@ -33,6 +40,7 @@ export function LangDemo({ code, runKey, autoRun = true, label, footer }: Props)
   const stageRef = useRef<HTMLDivElement>(null);
   const inView = useInView(stageRef);
   const [forced, setForced] = useState(false);
+  const mode = useThemeModeValue();
   const enabled = autoRun && (inView || forced);
   const { shown, streaming, finish } = useTypewriter(code, runKey, enabled);
 
@@ -95,11 +103,13 @@ export function LangDemo({ code, runKey, autoRun = true, label, footer }: Props)
                 <div className="renderhost__hint">等待第一个 token…</div>
               ) : (
                 <div className="renderhost">
-                  <Renderer
-                    library={openuiLibrary}
-                    response={visible}
-                    isStreaming={streaming}
-                  />
+                  <Suspense
+                    fallback={<div className="renderhost__hint">正在加载渲染器…</div>}
+                  >
+                    <OpenUITheme mode={mode}>
+                      <OpenUILangPreview response={visible} isStreaming={streaming} />
+                    </OpenUITheme>
+                  </Suspense>
                 </div>
               )}
             </RenderBoundary>

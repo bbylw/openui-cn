@@ -1,9 +1,9 @@
 import { useEffect } from "react";
 import { Navigate, Route, Routes, useLocation } from "react-router-dom";
-import { ThemeProvider } from "@openuidev/react-ui";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
-import { useThemeMode } from "@/lib/theme";
+import { applyRouteMeta } from "@/lib/meta";
+import { ThemeModeContext, useThemeMode } from "@/lib/theme";
 import BenchmarksPage from "@/pages/BenchmarksPage";
 import HomePage from "@/pages/HomePage";
 import LangPage from "@/pages/LangPage";
@@ -28,14 +28,18 @@ export default function App() {
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "auto" });
+    applyRouteMeta(pathname);
   }, [pathname]);
 
   return (
-    <ThemeProvider mode={mode}>
+    <ThemeModeContext.Provider value={mode}>
       <div className="shell">
+        <a className="skip" href="#main">
+          跳到主内容
+        </a>
         <Rail />
         <SiteHeader mode={mode} onToggleTheme={toggle} />
-        <main className="main">
+        <main className="main" id="main">
           <div className="page" key={pathname}>
             <Routes>
               <Route path="/" element={<HomePage />} />
@@ -49,6 +53,6 @@ export default function App() {
         </main>
         <SiteFooter />
       </div>
-    </ThemeProvider>
+    </ThemeModeContext.Provider>
   );
 }

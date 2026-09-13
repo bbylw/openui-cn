@@ -1,8 +1,15 @@
-import { useCallback, useEffect, useState } from "react";
+import { createContext, useCallback, useContext, useEffect, useState } from "react";
 
 export type ThemeMode = "light" | "dark";
 
 const STORAGE_KEY = "openui-cn-theme";
+
+/** 主题模式通过 context 下发，避免多处 useState 各持一份状态后互相脱节。 */
+export const ThemeModeContext = createContext<ThemeMode>("dark");
+
+export function useThemeModeValue(): ThemeMode {
+  return useContext(ThemeModeContext);
+}
 
 function current(): ThemeMode {
   if (typeof document === "undefined") return "dark";
