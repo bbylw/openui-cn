@@ -68,26 +68,45 @@ export function Playground() {
             </>
           }
           footer={
-            <div className="pg__meta">
-              <span>
-                场景 <b>{sample.scenario}</b>
-              </span>
-              <span>
-                语句 <b>{lineCount}</b> 行
-              </span>
-              <span>
-                Lang 字符 <b>{sample.code.length}</b>
-              </span>
-              {sample.official ? (
+            <>
+              <div className="pg__meta">
                 <span>
-                  官方基准 token · Vercel <b>{sample.official.vercel}</b> · C1{" "}
-                  <b>{sample.official.c1}</b> · OpenUI Lang{" "}
-                  <b className="accent">{sample.official.lang}</b>
+                  场景 <b>{sample.scenario}</b>
                 </span>
+                <span>
+                  语句 <b>{lineCount}</b> 行
+                </span>
+                <span>
+                  Lang 字符 <b>{sample.code.length}</b>
+                </span>
+                <span className="spacer">官方基准 token · tiktoken（GPT-5 编码器）</span>
+              </div>
+
+              {sample.official ? (
+                <div className="tokbars">
+                  {[
+                    { k: "Vercel JSON-Render", v: sample.official.vercel },
+                    { k: "Thesys C1 JSON", v: sample.official.c1 },
+                    { k: "OpenUI Lang", v: sample.official.lang, accent: true },
+                  ].map((row) => (
+                    <div className="tokbar" key={row.k}>
+                      <span className="tokbar__k">{row.k}</span>
+                      <span className="bars__track">
+                        <span
+                          className={`bars__fill${row.accent ? " bars__fill--accent" : ""}`}
+                          style={{ width: `${(row.v / sample.official!.vercel) * 100}%` }}
+                        />
+                      </span>
+                      <span className="tokbar__v">{row.v}</span>
+                    </div>
+                  ))}
+                </div>
               ) : (
-                <span>官方基准见「基准与对比」页</span>
+                <div className="pg__meta">
+                  <span>本示例对应的官方基准见「基准与对比」页</span>
+                </div>
               )}
-            </div>
+            </>
           }
         />
       </div>

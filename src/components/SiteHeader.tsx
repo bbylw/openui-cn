@@ -97,8 +97,9 @@ export function SiteHeader({ mode, onToggleTheme }: Props) {
             type="button"
             className="iconbtn"
             onClick={onToggleTheme}
-            aria-label={mode === "dark" ? "切换到浅色" : "切换到深色"}
-            title={mode === "dark" ? "切换到浅色" : "切换到深色"}
+            aria-pressed={mode === "light"}
+            aria-label={mode === "dark" ? "切换到浅色主题" : "切换到深色主题"}
+            title={mode === "dark" ? "切换到浅色主题" : "切换到深色主题"}
           >
             {mode === "dark" ? <SunIcon /> : <MoonIcon />}
           </button>

@@ -36,6 +36,14 @@ export function useInView<T extends Element>(ref: { current: T | null }): boolea
   useEffect(() => {
     const node = ref.current;
     if (!node || inView) return;
+
+    // 首屏元素同步判定，避免等 IntersectionObserver 回调才开启动画
+    const rect = node.getBoundingClientRect();
+    if (rect.top < window.innerHeight && rect.bottom > 0) {
+      setInView(true);
+      return;
+    }
+
     const io = getObserver();
     handlers.set(node, () => setInView(true));
     io.observe(node);

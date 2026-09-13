@@ -1,4 +1,4 @@
-import { Component, lazy, Suspense, useRef, useState } from "react";
+import { Component, lazy, Suspense, useEffect, useRef, useState } from "react";
 import type { ReactNode } from "react";
 import { LangCode } from "@/components/LangCode";
 import { useInView, useTypewriter } from "@/lib/hooks";
@@ -45,6 +45,14 @@ export function LangDemo({ code, runKey, autoRun = true, label, footer }: Props)
   const { shown, streaming, finish } = useTypewriter(code, runKey, enabled);
 
   const visible = enabled ? code.slice(0, shown) : code;
+  const codePaneRef = useRef<HTMLDivElement>(null);
+
+  /* 流式期间让代码面板跟着最新 token 走，像终端一样 */
+  useEffect(() => {
+    if (!streaming) return;
+    const el = codePaneRef.current;
+    if (el) el.scrollTop = el.scrollHeight;
+  }, [shown, streaming]);
 
   return (
     <div className="stage" ref={stageRef}>
@@ -69,7 +77,7 @@ export function LangDemo({ code, runKey, autoRun = true, label, footer }: Props)
               {visible.length} / {code.length} 字符
             </span>
           </div>
-          <div className="pane__body">
+          <div className="pane__body" ref={codePaneRef}>
             <LangCode code={visible} caret={streaming} />
           </div>
         </div>
